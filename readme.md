@@ -6,3 +6,4 @@ Install package and get help:<br>
 Compare JSON configs:<br>
 [![asciicast](https://asciinema.org/a/4WYujPW4PQvBaU12nmNM0LCER.svg)](https://asciinema.org/a/4WYujPW4PQvBaU12nmNM0LCER)<br>
 Compare YAML configs:<br>
+[![asciicast](https://asciinema.org/a/DFu4b4dUKQZWnLSW8dsHuL7WV.svg)](https://asciinema.org/a/DFu4b4dUKQZWnLSW8dsHuL7WV)<br>
