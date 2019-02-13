@@ -2,10 +2,8 @@
 import genDiff from '..';
 import program from 'commander';
 
-export default genDiff;
-
 program
-  .version('1.2.0')
+  .version('1.3.0')
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'Output format')
   .arguments('<firstConfig>  <secondConfig>')
