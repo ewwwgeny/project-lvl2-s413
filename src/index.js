@@ -17,6 +17,5 @@ export default (path1, path2) => {
   const ast = buildAST(data1, data2);
   const result = render(ast);
 
-  console.log(result);
   return result;
 };

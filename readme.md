@@ -9,3 +9,5 @@ Compare YAML configs:<br>
 [![asciicast](https://asciinema.org/a/DFu4b4dUKQZWnLSW8dsHuL7WV.svg)](https://asciinema.org/a/DFu4b4dUKQZWnLSW8dsHuL7WV)<br>
 Compare INI configs:<br>
 [![asciicast](https://asciinema.org/a/ZIw4HFXIHPL5bLM7QvtRvX0uP.svg)](https://asciinema.org/a/ZIw4HFXIHPL5bLM7QvtRvX0uP)<br>
+Compare nested configs:<br>
+[![asciicast](https://asciinema.org/a/vCtxzyzj7bv2llu206vNXmeLp.svg)](https://asciinema.org/a/vCtxzyzj7bv2llu206vNXmeLp)<br>
