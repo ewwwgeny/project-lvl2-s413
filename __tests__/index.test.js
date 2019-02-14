@@ -1,38 +1,51 @@
 import fs from 'fs';
+import path from 'path';
 import genDiff from '../src';
 
-const pathToExpected = '__tests__/__fixtures__/expected';
+const baseFolder = '__tests__/__fixtures__/';
+const subFolder1 = './flat';
+const subFolder2 = './nested';
 
-const relCfgPaths = [
-  ['__tests__/__fixtures__/before.json', '__tests__/__fixtures__/after.json'],
-  ['__tests__/__fixtures__/before.yaml', '__tests__/__fixtures__/after.yml'],
-  ['__tests__/__fixtures__/before.ini', '__tests__/__fixtures__/after.ini'],
+const fileNames = [
+  ['before.json', 'after.json', 'expected'],
+  ['before.yaml', 'after.yml', 'expected'],
+  ['before.ini', 'after.ini', 'expected'],
 ];
-test.each(relCfgPaths)(
-  'relative paths',
-  (before, after) => {
-    expect(genDiff(before, after)).toEqual(fs.readFileSync(pathToExpected, 'utf-8'));
+
+test.each(fileNames.map(subArr => subArr.map(name => path.resolve(baseFolder, subFolder1, name))))(
+  'relative paths flat docs',
+  (filepath1, filepath2, expected) => {
+    expect(genDiff(filepath1, filepath2)).toEqual(fs.readFileSync(expected, 'utf-8'));
   },
 );
+
+test.each(fileNames.map(subArr => subArr.map(name => path.resolve(baseFolder, subFolder2, name))))(
+  'relative paths nested docs',
+  (filepath1, filepath2, expected) => {
+    expect(genDiff(filepath1, filepath2)).toEqual(fs.readFileSync(expected, 'utf-8'));
+  },
+);
+
 /*
+const pathToFlatExpected = '__tests__/__fixtures__/nested/expected';
 const absCfgPaths = [
   [
-    '/home/user/hexlet/projects/2-lvl/__tests__/__fixtures__/before.json',
-    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/after.json',
+    '/home/user/hexlet/projects/2-lvl/__tests__/__fixtures__/nested/before.json',
+    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/nested/after.json',
   ],
   [
-    '/home/user/hexlet/projects/2-lvl/__tests__/__fixtures__/before.yaml',
-    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/after.yml',
+    '/home/user/hexlet/projects/2-lvl/__tests__/__fixtures__/nested/before.yaml',
+    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/nested/after.yml',
   ],
   [
-    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/before.ini',
-    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/after.ini',
+    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/nested/before.ini',
+    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/nested/after.ini',
   ],
 ];
 test.each(absCfgPaths)(
-  'absolute paths',
-  (before, after) => {
-    expect(genDiff(before, after)).toEqual(fs.readFileSync(pathToExpected, 'utf-8'));
+  'absolute paths nested docs',
+  (filepath1, filepath2) => {
+    expect(genDiff(filepath1, filepath2)).toEqual(fs.readFileSync(pathToExpected, 'utf-8'));
   },
 );
 */
