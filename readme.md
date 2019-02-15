@@ -13,3 +13,5 @@ Compare nested configs:<br>
 [![asciicast](https://asciinema.org/a/vCtxzyzj7bv2llu206vNXmeLp.svg)](https://asciinema.org/a/vCtxzyzj7bv2llu206vNXmeLp)<br>
 Output in plain format:<br>
 [![asciicast](https://asciinema.org/a/cj9V76zqSpIRlF6Z56tn11Ec7.svg)](https://asciinema.org/a/cj9V76zqSpIRlF6Z56tn11Ec7)<br>
+Output in JSON format:<br>
+[![asciicast](https://asciinema.org/a/CJkkl3qFr6VcMGTjRPc7vwWQi.svg)](https://asciinema.org/a/CJkkl3qFr6VcMGTjRPc7vwWQi)<br>

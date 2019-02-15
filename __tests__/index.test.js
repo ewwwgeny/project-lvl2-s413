@@ -13,6 +13,9 @@ const fileNames = [
   ['plain', 'before.json', 'after.json', 'expectedPlain'],
   ['plain', 'before.yaml', 'after.yml', 'expectedPlain'],
   ['plain', 'before.ini', 'after.ini', 'expectedPlain'],
+  ['json', 'before.json', 'after.json', 'expectedJSON'],
+  ['json', 'before.yaml', 'after.yml', 'expectedJSON'],
+  ['json', 'before.ini', 'after.ini', 'expectedJSON'],
 ];
 
 test.each(fileNames
@@ -45,7 +48,7 @@ const absCfgPaths = [
     '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/nested/after.yml',
   ],
   [
-    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/nested/before.ini',
+    '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/nested/before.ini'
     '/home/user//hexlet/projects/2-lvl/__tests__/__fixtures__/nested/after.ini',
   ],
 ];
