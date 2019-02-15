@@ -7,27 +7,34 @@ const subFolder1 = './flat';
 const subFolder2 = './nested';
 
 const fileNames = [
-  ['before.json', 'after.json', 'expected'],
-  ['before.yaml', 'after.yml', 'expected'],
-  ['before.ini', 'after.ini', 'expected'],
+  ['tree', 'before.json', 'after.json', 'expectedTree'],
+  ['tree', 'before.yaml', 'after.yml', 'expectedTree'],
+  ['tree', 'before.ini', 'after.ini', 'expectedTree'],
+  ['plain', 'before.json', 'after.json', 'expectedPlain'],
+  ['plain', 'before.yaml', 'after.yml', 'expectedPlain'],
+  ['plain', 'before.ini', 'after.ini', 'expectedPlain'],
 ];
 
-test.each(fileNames.map(subArr => subArr.map(name => path.resolve(baseFolder, subFolder1, name))))(
+test.each(fileNames
+  .map(subArr => subArr
+    .map((name, index) => (index === 0 ? name : path.resolve(baseFolder, subFolder1, name)))))(
   'relative paths flat docs',
-  (filepath1, filepath2, expected) => {
-    expect(genDiff(filepath1, filepath2)).toEqual(fs.readFileSync(expected, 'utf-8'));
+  (format, filepath1, filepath2, expected) => {
+    expect(genDiff(filepath1, filepath2, format)).toEqual(fs.readFileSync(expected, 'utf-8'));
   },
 );
 
-test.each(fileNames.map(subArr => subArr.map(name => path.resolve(baseFolder, subFolder2, name))))(
+test.each(fileNames
+  .map(subArr => subArr
+    .map((name, index) => (index === 0 ? name : path.resolve(baseFolder, subFolder2, name)))))(
   'relative paths nested docs',
-  (filepath1, filepath2, expected) => {
-    expect(genDiff(filepath1, filepath2)).toEqual(fs.readFileSync(expected, 'utf-8'));
+  (format, filepath1, filepath2, expected) => {
+    expect(genDiff(filepath1, filepath2, format)).toEqual(fs.readFileSync(expected, 'utf-8'));
   },
 );
 
 /*
-const pathToFlatExpected = '__tests__/__fixtures__/nested/expected';
+const pathToExpected = '__tests__/__fixtures__/nested/expectedPlain';
 const absCfgPaths = [
   [
     '/home/user/hexlet/projects/2-lvl/__tests__/__fixtures__/nested/before.json',
@@ -45,14 +52,8 @@ const absCfgPaths = [
 test.each(absCfgPaths)(
   'absolute paths nested docs',
   (filepath1, filepath2) => {
-    expect(genDiff(filepath1, filepath2)).toEqual(fs.readFileSync(pathToExpected, 'utf-8'));
+    expect(genDiff(filepath1, filepath2, 'plain'))
+    .toEqual(fs.readFileSync(pathToExpected, 'utf-8'));
   },
 );
-*/
-
-/*
-test('absolute paths, YAML', () => {
-  expect(genDiff(absCfgPath3, absCfgPath4).split('\n'))
-    .toEqual(expect.arrayContaining(fs.readFileSync(pathToExpected, 'utf-8').split('\n')));
-});
 */

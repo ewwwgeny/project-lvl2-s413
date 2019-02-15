@@ -10,12 +10,12 @@ const parseFile = (filepath) => {
   return parse(ext, content);
 };
 
-export default (path1, path2) => {
+export default (path1, path2, format) => {
   const data1 = parseFile(path1);
   const data2 = parseFile(path2);
 
   const ast = buildAST(data1, data2);
-  const result = render(ast);
+  const result = render(ast, format);
 
   return result;
 };
