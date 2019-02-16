@@ -1,9 +1,9 @@
 import renderPlain from './plainRenderer';
 import renderTree from './treeRenderer';
+import renderJSON from './jsonRenderer';
 
 const renderMethods = {
-  json: ast => JSON.stringify(ast, (_key, value) => (
-    typeof value === 'number' || typeof value === 'boolean' ? String(value) : value), '\t'),
+  json: renderJSON,
   plain: renderPlain,
   tree: renderTree,
 };
